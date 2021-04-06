@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+    <!-- NAVIGATION BAR -->
+    <div class="container-fluid">
+
+      <header class="d-flex justify-content-between">
+        <h1>[nama organisasi] Board</h1>
+        <nav class = "d-flex align-items-center">
+          <ul class="list-unstyled d-flex">
+            <li>[Nama user]</li>
+            <li>Logout</li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- BOARD CONTAINER -->
+      <div id="board-container" class="row">
+        <!-- BACKLOG CATEGORY -->
+        <div id="backlog-board" class="category-board col-3">
+          <div class="category-title-bar d-flex justify-content-between align-items-center">
+            <h2 class="category-title">Backlog</h2>
+            <i class="fa fa-plus fa-lg"></i>
+          </div>
+
+
+          <div class="tasks-container">
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">30 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Ini contoh task backlog pendek</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">9 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Ini contoh task backlog yang lumayan panjang isi teksnya hingga tinggi container tasknya menyesuaikan memanjang kebawah juga sesuai panjang teks ini</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">15 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Ini contoh task backlog sedang yang tidak sepanjang isi backlog sebelumnya</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">No Due Date</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Ini contoh task backlog kasus saat teks memilikipanjangkalimatyangtidakadaspasinyacontohnyasepertikalaungasihlink</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">3 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Due date tidak wajib ada, stylenya sesuai seberapa dekat dgn tanggal skrg (<3 hari, 1 minggu, 2minggu, 1 bulan, expired)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT CATEGORY -->
+        <div id="product-board" class="category-board col-3">
+          <div class="category-title-bar d-flex justify-content-between align-items-center">
+            <h2 class="category-title">Product</h2>
+            <i class="fa fa-plus fa-lg"></i>
+          </div>
+
+
+          <div class="tasks-container">
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">3 Mei</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Tinggi category board tetap maksimum kebawah karena diatur sesuai vh</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">5 Mei</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Lebar board keseluruhan memiliki min-width untuk sementara, jad scroll horizontal jika overflow</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEVELOPMENT CANTEGORY -->
+        <div id="development-board" class="category-board col-3">
+          <div class="category-title-bar d-flex justify-content-between align-items-center">
+            <h2 class="category-title">Development</h2>
+            <i class="fa fa-plus fa-lg"></i>
+          </div>
+
+
+          <div class="tasks-container">
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">30 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Terdapat option di sebelah kanan due date pada masing-masing task</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">30 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Option tersebut hanya akan terlihat saat nav-bar pada task tersebut di hover</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">30 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Fungsinya masingmasing ==> 2 panah: untuk memindahkan category dari task tersebut, pensil: mengedit isi dari task/due date, kotak sampah: menghapus task tersebut</p>
+            </div>
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">8 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Jika tinggi dari total semua task melebihi tinggi dari tinggi category board</p>
+            </div>
+  
+  
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">29 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Maka akan keluar scroll bar di sisi kanan dari category tersebut, untuk mengatasi overflow ke arah y, seperti yang ada pada kategori ini ( kecuali jika device yg digunakan sekarang punya height yang cukup tinggi jadi tidak overflow disini</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- DONE CATEGORY -->
+        <div id="done-board" class="category-board col-3">
+          <div class="category-title-bar d-flex justify-content-between align-items-center">
+            <h2 class="category-title">Done</h2>
+            <i class="fa fa-plus fa-lg"></i>
+          </div>
+
+
+          <div class="tasks-container">
+            <div class="task">
+              <div class="task-nav-bar d-flex justify-content-between">
+                <p class="task-due">12 April</p>
+                <div class="icon-container">
+                  <i class="fa fa-arrows-alt-h"></i>
+                  <i class="fa fa-pencil-alt fa-xs"></i> 
+                  <i class="fa fa-trash "></i>
+                </div>
+              </div>          
+              <p class="task-title">Terdapat juga tombol add tanda plus di sebelah kanan dari judul kategori, yang akan terlihat jika judul kategori di hover</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

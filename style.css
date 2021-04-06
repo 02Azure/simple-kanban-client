@@ -1,0 +1,55 @@
+html {
+  background-color: azure;
+}
+
+h1, h2{
+  display:inline-block
+}
+
+header{
+  margin:0;
+}
+
+nav ul li {
+margin-left: 15px;
+}
+
+i{
+  visibility: hidden;
+}
+
+/* #board-container {
+  overflow-x: scroll;
+} */
+#board-container {
+  margin-top: 20px;
+  padding: 0 15px;
+}
+.category-board{
+  border: solid red 1px;
+  height: 75vh;
+  min-width:250px;
+}
+
+.category-title-bar:hover i{
+  visibility:visible
+}
+
+.tasks-container{
+  overflow-y: auto;
+  height:65vh;
+}
+
+.task {
+  word-wrap: break-word;
+  margin: 10px 0;
+  border: solid blue 1px;
+}
+
+.task:hover *{
+  visibility:visible
+}
+
+.icon-container i {
+  margin-left:10px;
+}
