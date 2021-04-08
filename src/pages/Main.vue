@@ -1,0 +1,60 @@
+<template>
+  <div id="board-page" class="page">
+    <div id="board-container" class="row">
+      <CategoryBoard 
+        v-for= "(category, i) in categories"
+        :key= "i"
+        v-bind:tasks = "tasks"
+        v-bind:category = "category"
+        v-bind:taskId = "taskId"
+        v-on:getTaskId = "getTaskId"
+        v-on:deleteTask = "deleteTask"
+        v-on:selectCategory = "selectCategory"
+        v-on:toEditPage = "toEditPage"
+      ></CategoryBoard>
+    </div>
+  </div>
+</template>
+
+<script>
+import CategoryBoard from '../components/CategoryBoard.vue'
+
+export default {
+  components: { CategoryBoard },
+  name: "Main",
+  data() {
+    return {
+      categories: ["backlog", "todo", "doing", "done"]
+    }
+  },
+  props: ["tasks", "newTaskCategory", "taskId"],
+  methods: {
+    getAllTasks() {
+      this.$emit("getAllTasks")
+    },
+
+    selectCategory(category) {
+      this.$emit("selectCategory", category)
+    },
+
+    toEditPage(id) {
+      this.$emit("toEditPage", id)
+    },
+
+    deleteTask(id) {
+      this.$emit("deleteTask", id)
+    },
+
+    getTaskId(id) {
+      this.$emit("getTaskId", id)
+    }
+  },
+  created() {
+    this.getAllTasks()
+  }
+}
+</script>
+
+<style>
+
+</style>

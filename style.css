@@ -2,32 +2,46 @@ html {
   background-color: azure;
 }
 
-h1, h2{
-  display:inline-block
-}
-
-header{
-  margin:0;
-}
-
 nav ul li {
-margin-left: 15px;
+  margin-left: 15px;
+}
+
+li{
+  float:right;
 }
 
 i{
   visibility: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
-/* #board-container {
-  overflow-x: scroll;
-} */
+i:hover {
+  transform: scale(1.4)
+}
+
+header{
+  background-color: springgreen;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  margin:0 !important;
+  z-index: 2;
+}
+
+.page{
+  margin-top: 70px;
+}
+
 #board-container {
   margin-top: 20px;
   padding: 0 15px;
 }
+
 .category-board{
   border: solid red 1px;
-  height: 75vh;
+  height: 80vh;
   min-width:250px;
 }
 
@@ -37,7 +51,7 @@ i{
 
 .tasks-container{
   overflow-y: auto;
-  height:65vh;
+  height:70vh;
 }
 
 .task {
@@ -52,4 +66,12 @@ i{
 
 .icon-container i {
   margin-left:10px;
+}
+
+#add-form{
+  height: 80vh;
+}
+
+#login-button {
+  width: 100%;
 }
