@@ -46,6 +46,10 @@ export default {
       this.$emit("getUsername", username)
     },
 
+    showError(message) {
+      this.$emit("showError", message)
+    },
+    
     login() {
       axios({
         method: "POST",
@@ -62,13 +66,7 @@ export default {
         this.toPage("board")
       })
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     },
   }

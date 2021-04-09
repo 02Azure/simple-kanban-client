@@ -9,7 +9,9 @@
         v-bind:color = "colors[i]"
         v-bind:lightercolor = "lightercolors[i]"
         v-bind:taskId = "taskId"
+        v-on:toPage= "toPage"
         v-on:getTaskId = "getTaskId"
+        v-on:moveTask = "moveTask"
         v-on:deleteTask = "deleteTask"
         v-on:selectCategory = "selectCategory"
         v-on:toEditPage = "toEditPage"
@@ -33,6 +35,10 @@ export default {
   },
   props: ["tasks", "newTaskCategory", "taskId"],
   methods: {
+    toPage(page) {
+      this.$emit("toPage", page)
+    },
+
     getAllTasks() {
       this.$emit("getAllTasks")
     },
@@ -41,17 +47,23 @@ export default {
       this.$emit("selectCategory", category)
     },
 
+    getTaskId(id) {
+      this.$emit("getTaskId", id)
+    },
+
     toEditPage(id) {
       this.$emit("toEditPage", id)
+    },
+
+    moveTask(category) {
+      this.$emit("moveTask", category)
     },
 
     deleteTask(id) {
       this.$emit("deleteTask", id)
     },
 
-    getTaskId(id) {
-      this.$emit("getTaskId", id)
-    }
+
   },
   created() {
     this.getAllTasks()

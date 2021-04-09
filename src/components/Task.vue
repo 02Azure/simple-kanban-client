@@ -1,5 +1,10 @@
 <template>
-  <div v-bind:style="{ backgroundColor: taskcolor, borderLeft: `solid ${leftcolor} 8px`}" class="task">
+  <div 
+    v-bind:style="{ backgroundColor: taskcolor, borderLeft: `solid ${leftcolor} 8px`}" 
+    v-on:dragstart= "getTaskId(task.id)"
+    class="task"
+    draggable="true"
+    >
     <div class="task-nav-bar d-flex justify-content-between">
       <p class="task-due">{{task.due}}</p>
       <div class="icon-container">

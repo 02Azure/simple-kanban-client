@@ -1,8 +1,13 @@
 <template>
-  <div class="category-board col-xl-3 col-md-6 col-12">
+  <div 
+    v-on:drop="selectCategory(category); moveTask(category)"
+    v-on:dragenter.prevent
+    v-on:dragover.prevent
+    class="category-board col-xl-3 col-md-6 col-12"
+    >
     <div v-bind:style="{ backgroundColor: color}" class="category-title-bar d-flex justify-content-between align-items-center">
       <h2 class="category-title" v-text="category[0].toUpperCase() + category.slice(1)"></h2>
-      <i v-on:click="selectCategory(category)" class="fa fa-plus fa-lg"></i>
+      <i v-on:click="selectCategory(category); toPage('add')" class="fa fa-plus fa-lg"></i>
     </div>
 
     <div class="tasks-container">
@@ -29,12 +34,20 @@ export default {
   name: "CategoryBoard",
   props: ["category", "tasks", "taskId", "color", "lightercolor"],
   methods: {
+    toPage(page) {
+      this.$emit("toPage", page)
+    },
+
     selectCategory(category) {
       this.$emit("selectCategory", category)
     },
     
     toEditPage(id) {
       this.$emit("toEditPage", id)
+    },
+
+    moveTask(category) {
+      this.$emit("moveTask", category)
     },
 
     deleteTask(id) {

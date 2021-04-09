@@ -8,12 +8,14 @@
 
     <Login 
       v-if="page ==='login'"
+      v-on:showError = "showError"
       v-on:toPage = "toPage"
       v-on:getUsername = "getUsername"
     ></Login>
 
     <Register 
       v-if="page ==='register'"
+      v-on:showError = "showError"
       v-on:toPage = "toPage"
       v-on:register = "register"
     ></Register>
@@ -22,6 +24,7 @@
       v-else-if="page === 'board'"
       v-bind:tasks = "tasks"
       v-bind:taskId = "taskId"
+      v-on:toPage= "toPage"
       v-on:getAllTasks= "getAllTasks"
       v-on:getTaskId = "getTaskId"
       v-on:selectCategory = "selectCategory"
@@ -87,11 +90,14 @@ export default {
 
     selectCategory(category) {
       this.newTaskCategory = category
-      this.toPage("add")
+    },
+
+    getTaskId(id) {
+      this.taskId = id
     },
 
     toEditPage(id) {
-      this.taskId = id
+      this.getTaskId(id)
       this.toPage("edit")
     },
 
@@ -101,6 +107,16 @@ export default {
 
     getUsername(username) {
       this.username = username
+    },
+
+    showError(message) {
+      Swal.fire({
+          title: 'Oops...',
+          text: message,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+      })
     },
 
     onSignIn(googleUser) {
@@ -113,24 +129,17 @@ export default {
           id_token
         }
       })
+
       .then(response => {
         localStorage.setItem("access_token", response.data.access_token)
         localStorage.setItem("username", response.data.username)
         this.getUsername(response.data.username)
         this.toPage("board")
       })
+
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
-    },
-    getTaskId(id) {
-      this.taskId = id
     },
 
     getAllTasks() {
@@ -147,13 +156,7 @@ export default {
       })
 
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     },
     
@@ -176,13 +179,7 @@ export default {
       })
       
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     },
 
@@ -204,41 +201,31 @@ export default {
       })
       
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     },
 
     moveTask(newCategory) {
-      axios({
-        url: "/tasks/" + this.taskId,
-        method: "PATCH",
-        headers: {
-          access_token: localStorage.getItem("access_token")
-        },
-        data: {
-          category: newCategory
-        }
-      })
-
-      .then(response => {
-        this.getAllTasks()
-      })
-      
-      .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
+      if(newCategory !== this.tasks.find(task => task.id === this.taskId).category) {
+        axios({
+          url: "/tasks/" + this.taskId,
+          method: "PATCH",
+          headers: {
+            access_token: localStorage.getItem("access_token")
+          },
+          data: {
+            category: newCategory
+          }
         })
-      })
+
+        .then(response => {
+          this.getAllTasks()
+        })
+        
+        .catch(err => {
+          this.showError(err.response.data.error)
+        })
+      }
     },
 
     deleteTask(id) {
@@ -255,16 +242,11 @@ export default {
       })
       
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     }
   },
+
   computed: {
     findOne() {
       return this.tasks.find(task => task.id === this.taskId)

@@ -60,9 +60,4 @@ export default {
   .form-group {
     margin: 1.5em 0;
   }
-
-  button {
-    margin:0 10px;
-    width: 45%
-  }
 </style>

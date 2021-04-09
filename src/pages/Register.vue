@@ -43,6 +43,11 @@ export default {
     toPage(page) {
       this.$emit("toPage", page)
     },
+    
+    showError(message) {
+      this.$emit("showError", message)
+    },
+
     register() {
       axios({
         method: "POST",
@@ -53,17 +58,13 @@ export default {
           password: this.password
         }
       })
+      
       .then(response => {
         this.toPage("login")
       })
+
       .catch(err => {
-        Swal.fire({
-          title: 'Oops...',
-          text: err.response.data.error,
-          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
-          imageWidth: 200,
-          imageAlt: 'Custom image',
-        })
+        this.showError(err.response.data.error)
       })
     },
   }

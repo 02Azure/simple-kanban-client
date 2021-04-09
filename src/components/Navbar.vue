@@ -34,11 +34,6 @@ export default {
         thisToPage("login")
       })
     }
-  },
-
-  mounted() {
-    console.log("mounted navbar gapi")
-        console.log(gapi)
   }
 }
 </script>
