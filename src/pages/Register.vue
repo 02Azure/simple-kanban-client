@@ -60,7 +60,16 @@ export default {
       })
       
       .then(response => {
+        Swal.fire({
+          title: 'Registration Complete',
+          text: "Success! Now you can login with your brand new account!",
+          imageUrl: 'https://ih1.redbubble.net/image.648333243.3470/st,small,507x507-pad,600x600,f8f8f8.u3.jpg',
+          imageWidth: 200,
+          imageAlt: 'Pepe image',
+        })
+
         this.toPage("login")
+
       })
 
       .catch(err => {
