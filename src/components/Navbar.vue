@@ -29,8 +29,11 @@ export default {
 
       auth2.signOut()
         .then(function () {
-        console.log('User signed out.');
-      
+        console.log('User signed out.')
+        .catch(err => {
+          console.log(err)
+        })
+        
         thisToPage("login")
       })
     }
