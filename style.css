@@ -1,0 +1,111 @@
+body {
+  background-image: url("https://us.123rf.com/450wm/phonlamaiphoto/phonlamaiphoto1611/phonlamaiphoto161101770/65648106-wooden-background-or-timber-wood-background.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+h1 {
+  font-size: 2.3em;
+}
+
+nav ul li {
+  margin-left: 15px;
+}
+
+li{
+  float:right;
+}
+
+i{
+  visibility: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+i:hover {
+  transform: scale(1.4)
+}
+
+header{
+  background-color: paleturquoise;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  margin:0 !important;
+  z-index: 2;
+}
+
+.page{
+  background-color:rgba(255,255,255, 0.85);
+  margin: 70px auto 0 auto;
+}
+
+#board-container {
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+.category-board{
+  min-height: 400px;
+  height: 80vh;
+  min-width:250px;
+}
+.category-title {
+  padding-left: 5px;
+}
+.category-title-bar:hover i{
+  visibility:visible
+}
+
+.tasks-container{
+  overflow-y: auto;
+  height:70vh;
+}
+
+.task {
+  word-wrap: break-word;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.fa-plus {
+  margin-right: 8px;
+}
+
+.task:hover *{
+  visibility:visible
+}
+
+.icon-container i {
+  margin-left:10px;
+}
+
+/* LOGIN/REG PAGE */
+#login-page, #register-page, #add-page, #edit-page {
+  min-width:500px;
+  width: 50vw;
+  border: double brown 5px
+} 
+
+#login-page{
+  border-bottom: none
+}
+
+#login-button, #reg-button {
+  width: 100%;
+}
+
+/*  */
+#gbuttoncont {
+  margin: auto;
+  min-width: 500px;
+  width: 50vw;
+  background-color:rgba(255,255,255, 0.85);
+}
+#google-signin-button {
+  padding-bottom: 25px;
+  border: double brown 5px;
+  border-top: none;
+}
