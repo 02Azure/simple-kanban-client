@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="main-cont" class="container-fluid">
     <Navbar 
       v-bind:page = "page"
       v-bind:username = "username"
@@ -48,6 +48,12 @@
     <Modal
       v-on:moveTask = "moveTask"
     ></Modal>
+
+    <!-- supaya tetap di render jadi gapi di navbar tetap terdefinisi walaupun di luar halaman login -->
+    <div id="gbuttoncont" v-show="page ==='login'">    
+      <div id="google-signin-button" class="d-flex justify-content-center"></div> 
+    </div>
+
   </div>
 </template>
 
@@ -97,6 +103,32 @@ export default {
       this.username = username
     },
 
+    onSignIn(googleUser) {
+      let id_token = googleUser.getAuthResponse().id_token;
+
+      axios({
+        method: "POST",
+        url: "/glogin",
+        data: {
+          id_token
+        }
+      })
+      .then(response => {
+        localStorage.setItem("access_token", response.data.access_token)
+        localStorage.setItem("username", response.data.username)
+        this.getUsername(response.data.username)
+        this.toPage("board")
+      })
+      .catch(err => {
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
+      })
+    },
     getTaskId(id) {
       this.taskId = id
     },
@@ -115,7 +147,13 @@ export default {
       })
 
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
     
@@ -138,7 +176,13 @@ export default {
       })
       
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
 
@@ -160,12 +204,17 @@ export default {
       })
       
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
 
     moveTask(newCategory) {
-      console.log(this.taskId, newCategory)
       axios({
         url: "/tasks/" + this.taskId,
         method: "PATCH",
@@ -182,7 +231,13 @@ export default {
       })
       
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
 
@@ -200,7 +255,13 @@ export default {
       })
       
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     }
   },
@@ -212,7 +273,13 @@ export default {
 
   created() {
     if(localStorage.getItem("access_token")) this.page = "board"
-  }
+  },
+
+  mounted() {
+    gapi.signin2.render('google-signin-button', {
+      onsuccess: this.onSignIn
+    })
+  },
 }
 </script>
 

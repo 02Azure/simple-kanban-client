@@ -6,6 +6,8 @@
         :key= "i"
         v-bind:tasks = "tasks"
         v-bind:category = "category"
+        v-bind:color = "colors[i]"
+        v-bind:lightercolor = "lightercolors[i]"
         v-bind:taskId = "taskId"
         v-on:getTaskId = "getTaskId"
         v-on:deleteTask = "deleteTask"
@@ -24,6 +26,8 @@ export default {
   name: "Main",
   data() {
     return {
+      colors: ["salmon", "orange", "khaki", "springgreen"],
+      lightercolors: ["peachpuff", "moccasin", "lemonchiffon", "rgb(220,255,200)"], 
       categories: ["backlog", "todo", "doing", "done"]
     }
   },

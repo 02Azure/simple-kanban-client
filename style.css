@@ -1,5 +1,12 @@
-html {
-  background-color: azure;
+body {
+  background-image: url("https://us.123rf.com/450wm/phonlamaiphoto/phonlamaiphoto1611/phonlamaiphoto161101770/65648106-wooden-background-or-timber-wood-background.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+h1 {
+  font-size: 2.3em;
 }
 
 nav ul li {
@@ -21,7 +28,7 @@ i:hover {
 }
 
 header{
-  background-color: springgreen;
+  background-color: paleturquoise;
   position: fixed;
   top:0;
   left:0;
@@ -31,7 +38,8 @@ header{
 }
 
 .page{
-  margin-top: 70px;
+  background-color:rgba(255,255,255, 0.85);
+  margin: 70px auto 0 auto;
 }
 
 #board-container {
@@ -40,11 +48,13 @@ header{
 }
 
 .category-board{
-  border: solid red 1px;
+  min-height: 400px;
   height: 80vh;
   min-width:250px;
 }
-
+.category-title {
+  padding-left: 5px;
+}
 .category-title-bar:hover i{
   visibility:visible
 }
@@ -57,7 +67,11 @@ header{
 .task {
   word-wrap: break-word;
   margin: 10px 0;
-  border: solid blue 1px;
+  padding: 5px;
+}
+
+.fa-plus {
+  margin-right: 8px;
 }
 
 .task:hover *{
@@ -68,10 +82,30 @@ header{
   margin-left:10px;
 }
 
-#add-form{
-  height: 80vh;
+/* LOGIN/REG PAGE */
+#login-page, #register-page, #add-page, #edit-page {
+  min-width:500px;
+  width: 50vw;
+  border: double brown 5px
+} 
+
+#login-page{
+  border-bottom: none
 }
 
-#login-button {
+#login-button, #reg-button {
   width: 100%;
+}
+
+/*  */
+#gbuttoncont {
+  margin: auto;
+  min-width: 500px;
+  width: 50vw;
+  background-color:rgba(255,255,255, 0.85);
+}
+#google-signin-button {
+  padding-bottom: 25px;
+  border: double brown 5px;
+  border-top: none;
 }

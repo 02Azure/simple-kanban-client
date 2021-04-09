@@ -1,5 +1,5 @@
 <template>
-  <div class="task">
+  <div v-bind:style="{ backgroundColor: taskcolor, borderLeft: `solid ${leftcolor} 8px`}" class="task">
     <div class="task-nav-bar d-flex justify-content-between">
       <p class="task-due">{{task.due}}</p>
       <div class="icon-container">
@@ -21,7 +21,7 @@
 <script>
 export default {
   name: "Task",
-  props: ["task"],
+  props: ["task", "color", "taskcolor", "leftcolor"],
   methods: {
     toEditPage(id) {
       this.$emit("toEditPage", id)

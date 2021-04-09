@@ -1,23 +1,24 @@
 <template>
   <div id="login-page" class= "page row">
-    <div id ="login-form" class="col-6 offset-3 text-center">
+    <div class="col-6 offset-3 text-center">
       <h2>Login</h2>
 
-      <form v-on:submit.prevent="login">
+      <form id="login-form" v-on:submit.prevent="login">
         <div class="form-group">
           <label for="login-username">Username</label>
           <input v-model="username" type="text" class="form-control" id="login-username" aria-describedby="emailHelp" placeholder="Enter your username" required>
         </div>
+
         <div class="form-group">
           <label for="login-password">Password</label>
-          <input v-model="password" type="password" class="form-control" id="login-password" placeholder>
-        </div> <br>
+          <input v-model="password" type="password" class="form-control" id="login-password" placeholder="Enter your password" required>
+        </div>
 
         <button id="login-button" type="submit" class="btn btn-primary">Login</button>
-        <br><br>
-        <p>Don't have an account yet? <a v-on:click.prevent="toPage('register')" href="">Register now!</a> Or login / register with your Google Account:</p>
-        <div id="google-signin-button"></div>
       </form>
+
+      <p>Don't have an account yet? <a v-on:click.prevent="toPage('register')" href="">Register now!</a> </p>
+      <p>Or login / register with your Google Account:</p>
 
     </div>
   </div> 
@@ -28,11 +29,7 @@ import axios from "../API/axios"
 
 export default {
   name: "Login",
-  mounted() {
-    gapi.signin2.render('google-signin-button', {
-      onsuccess: this.onSignIn
-    })
-  },
+
 
   data() {
     return {
@@ -65,35 +62,29 @@ export default {
         this.toPage("board")
       })
       .catch(err => {
-        console.log(err.response.data.error)
-      })
-    },
-
-    onSignIn(googleUser) {
-      let id_token = googleUser.getAuthResponse().id_token;
-
-      axios({
-        method: "POST",
-        url: "/glogin",
-        data: {
-          id_token
-        }
-      })
-      .then(response => {
-        console.log("berhasillogin")
-        localStorage.setItem("access_token", response.data.access_token)
-        localStorage.setItem("username", response.data.username)
-        this.getUsername(response.data.username)
-        this.toPage("board")
-      })
-      .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
   }
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    margin-bottom: 15px;
+  }
 
+  form{
+    margin: 2em 0;
+  }
+
+  .form-group {
+    margin: 1.5em 0;
+  }
 </style>

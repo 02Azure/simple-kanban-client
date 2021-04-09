@@ -57,13 +57,29 @@ export default {
         this.toPage("login")
       })
       .catch(err => {
-        console.log(err.response.data.error)
+        Swal.fire({
+          title: 'Oops...',
+          text: err.response.data.error,
+          imageUrl: 'https://streamsentials.com/wp-content/uploads/pepehands-transparent-pic.png',
+          imageWidth: 200,
+          imageAlt: 'Custom image',
+        })
       })
     },
   }
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    margin-bottom: 15px;
+  }
 
+  form{
+    margin: 2em 0;
+  }
+
+  .form-group {
+    margin: 1.5em 0;
+  }
 </style>

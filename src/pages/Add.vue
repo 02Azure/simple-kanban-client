@@ -11,8 +11,10 @@
           <label for="add-date">Due</label>
           <input v-model="due" type="date" class="form-control" id="add-date" required>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button v-on:click="toPage('board')" class="btn btn-danger">Cancel</button>
+          <div class="row">
+            <button type="submit" class="btn btn-primary col-5">Add</button>
+            <button v-on:click="toPage('board')" class="btn btn-danger col-5 offset-2">Cancel</button>
+          </div>
       </form>
     </div>
   </div>
@@ -46,6 +48,21 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    margin-bottom: 15px;
+  }
 
+  form{
+    margin: 2em 0;
+  }
+
+  .form-group {
+    margin: 1.5em 0;
+  }
+
+  button {
+    margin:0 10px;
+    width: 45%
+  }
 </style>
