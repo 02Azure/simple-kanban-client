@@ -14,7 +14,7 @@
     ></Login>
 
     <Register 
-      v-if="page ==='register'"
+      v-else-if="page ==='register'"
       v-on:showError = "showError"
       v-on:toPage = "toPage"
       v-on:register = "register"

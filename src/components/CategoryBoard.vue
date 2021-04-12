@@ -6,13 +6,13 @@
     class="category-board col-xl-3 col-md-6 col-12"
     >
     <div v-bind:style="{ backgroundColor: color}" class="category-title-bar d-flex justify-content-between align-items-center">
-      <h2 class="category-title" v-text="category[0].toUpperCase() + category.slice(1)"></h2>
+      <h2 class="category-title" v-text="Cap1stLetterCategory"></h2>
       <i v-on:click="selectCategory(category); toPage('add')" class="fa fa-plus fa-lg"></i>
     </div>
 
     <div class="tasks-container">
       <Task
-        v-for="task in filterCategory"
+        v-for="task in filteredTasks"
         :key="task.id"
         v-bind:task= "task"
         v-bind:taskId = "taskId"
@@ -59,9 +59,13 @@ export default {
     }
   },
   computed: {
-    filterCategory() {
+    filteredTasks() {
       return this.tasks.filter(task => task.category === this.category)
     },
+
+    Cap1stLetterCategory() {
+      return this.category[0].toUpperCase() + this.category.slice(1)
+    }
   },
   components: {Task}
 
